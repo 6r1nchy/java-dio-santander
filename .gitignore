@@ -1,0 +1,35 @@
+# Ignorar arquivos de compilação e binários
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignorar diretórios de build
+/bin/
+/build/
+/target/
+
+# Ignorar arquivos de configuração do IDE
+/.idea/
+/.vscode/
+/*.iml
+
+# Ignorar logs e arquivos temporários
+*.log
+*.tmp
+
+# Ignorar dependências locais e caches
+/.gradle/
+/.gradle/
+/.mvn/
+/.mvn/repository/
+
+# Ignorar arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar credenciais e configurações privadas
+*.env
+secrets.json
+config/settings.json
+
