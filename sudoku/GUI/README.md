@@ -1,19 +1,21 @@
-# Sudoku via Terminal
+# Sudoku com GUI em Java
 
-Este projeto consiste em uma implementação jogável de Sudoku, executada diretamente no terminal, desenvolvida com Java puro, seguindo rigorosamente os princípios de POO e boas práticas de arquitetura de software.
+Este projeto é uma versão expandida e interativa do Sudoku via terminal, agora com interface gráfica desenvolvida com Swing, mantendo a lógica de jogo totalmente em Java puro e orientado a objetos.
+
+O visual é simples mas eficaz: uma janela com o tabuleiro 9x9, campos jogáveis, feedback em tempo real, e botões de interação. Toda a lógica é herdada da versão terminal, agora com usabilidade visual.
 
 ## Proposta
 
-Criar um jogo de Sudoku 9x9, com células fixas e jogáveis, onde o usuário interage via terminal, inserindo valores e completando o tabuleiro conforme as regras do jogo.
+Criar um jogo completo de Sudoku com interface gráfica usando Swing, a partir de uma base orientada a objetos em Java puro. O jogador interage com campos editáveis e recebe feedback visual com botões de validação e solução.
 
 A proposta inclui:
-- Leitura e exibição do tabuleiro no terminal;
-- Células pré-preenchidas fixas (não editáveis);
-- Interface de interação via texto;
-- Feedback ao jogador em tempo real;
-- Validações de jogadas;
-- Suporte a entrada de comandos especiais (como ajuda e sair) e,
-- Geração dinâmica de novos tabuleiros após a primeira rodada.
+- Interface amigável com JFrame, JPanel e JTextField
+- Tabuleiro gerado dinamicamente com níveis de dificuldade
+- Células fixas são bloqueadas visualmente (cinzas)
+- Validação visual via botão “Verificar”
+- Botão “Mostrar Solução” para testes e fim de jogo
+- Feedback via pop-ups (JOptionPane)
+- Arquitetura desacoplada para fácil manutenção e expansão
 
 ## Desafios Técnicos
 - Aplicar OOP (encapsulamento, responsabilidade única e modularidade);
@@ -36,20 +38,24 @@ sudoku-terminal/
     │   └── SudokuGame.java         # Contém a lógica do jogo
     ├── util/
     │   └── BoardLoader.java        # Carrega o tabuleiro a partir de um arquivo
+    ├── gui/
+    │   ├── SudokuPanel.java        # Painel com a grade do tabuleiro e botões
+    │   ├── SudokuFrame.java        # Janela principal do jogo
+    │   └── SudokuController.java   # Controlador que lida com eventos e validações
     └── generator/
         └── BoardGenerator.java     # Gera tabuleiros Sudoku válidos
+    
 ```
-
 
 ## Como jogar
 **Pré-requisitos:**
 - JDK 17 ou superior,
-- Terminal/bash.
+- IDE ou terminal com suporte a projetos Java.
 
 **Passos:**
 ```bash
 # 1. Acesse o diretório raiz do projeto
-cd sudoku-terminal/src
+cd sudoku/GUI/src
 
 # 2. Compile todos os arquivos
 javac App.java model/*.java service/*.java util/*.java generator/*.java
@@ -58,8 +64,17 @@ javac App.java model/*.java service/*.java util/*.java generator/*.java
 java App
 ```
 
-Comandos disponíveis:
-- Para jogar: digite linha coluna valor (ex: 4 3 7 → insere o número 7 na linha 4, coluna 3).
-- Comandos especiais:
-    - `ajuda` → mostra instruções do jogo.
-    - `sair` → encerra o jogo atual.
+Controles disponíveis:
+- Digite valores de 1 a 9 nas células jogáveis (brancas)
+- Células fixas (cinzas) não podem ser alteradas
+- Pressione:
+    - `Verificar` → valida se o Sudoku está corretamente resolvido
+    - `Mostrar Solução` → preenche automaticamente a solução completa (encerra o jogo atual)
+
+## O que vem a seguir
+Se conseguir voltar a este projeto, considero adicionar:
+- Botão de "Novo Jogo";
+- Menu de seleção de dificuldade (fácil, médio, difícil);
+- Destaque visual de erros em tempo real;
+- Timer e contador de jogadas e,
+- Exportação para .jar ou versão instalável.

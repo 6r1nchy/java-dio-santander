@@ -49,7 +49,7 @@ sudoku-terminal/
 **Passos:**
 ```bash
 # 1. Acesse o diretório raiz do projeto
-cd sudoku-terminal/src
+cd sudoku/terminal/src
 
 # 2. Compile todos os arquivos
 javac App.java model/*.java service/*.java util/*.java generator/*.java
