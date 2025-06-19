@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  viacep-api:
+    container_name: viacep-app
+    image: openjdk:17-jdk-slim
+    working_dir: /app
+    volumes:
+      - ./viacep-java:/app
+    ports:
+      - "8080:8080"
+    command: [ "sh", "-c", "while true; do sleep 60; done" ]
