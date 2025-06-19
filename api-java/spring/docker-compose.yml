@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: banco-postgres
+    environment:
+      POSTGRES_DB: produtosdb
+      POSTGRES_USER: admin  # defina o usuário do banco de dados
+      POSTGRES_PASSWORD: senha123 # defina a senha do usuário
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    image: maven:3.9.4-eclipse-temurin-17
+    container_name: dev-app
+    working_dir: /app
+    command: tail -f /dev/null
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./spring:/app
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
