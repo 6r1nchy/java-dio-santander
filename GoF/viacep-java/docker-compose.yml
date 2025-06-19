@@ -6,7 +6,7 @@ services:
     image: openjdk:17-jdk-slim
     working_dir: /app
     volumes:
-      - ./viacep-java:/app
+      - .:/app
     ports:
       - "8080:8080"
     command: [ "sh", "-c", "while true; do sleep 60; done" ]
