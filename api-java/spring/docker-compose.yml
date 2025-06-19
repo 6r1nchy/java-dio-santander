@@ -4,8 +4,8 @@ services:
     container_name: banco-postgres
     environment:
       POSTGRES_DB: produtosdb
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
+      POSTGRES_USER: admin  # defina o usuário do banco de dados
+      POSTGRES_PASSWORD: senha123 # defina a senha do usuário
     ports:
       - "5432:5432"
     volumes:
