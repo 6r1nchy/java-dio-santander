@@ -1,16 +1,17 @@
-FROM openjdk:17-jdk-slim
-
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean
-
+# Build stage
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-COPY mvnw* ./
-COPY .mvn/ .mvn/
+# Run stage
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 
-COPY . .
+# Cria diretório para o H2 e define permissões
+RUN mkdir -p /data && chmod 777 /data
 
-RUN mvn dependency:go-offline
-
-CMD ["mvn", "spring-boot:run"]
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
