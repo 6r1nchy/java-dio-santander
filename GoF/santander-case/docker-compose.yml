@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - h2-data:/data
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+
+volumes:
+  h2-data:
